@@ -1,0 +1,16 @@
+
+export function setupCanvas(canvas: HTMLCanvasElement, width: number, height: number) {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.round(width * dpr);
+  canvas.height = Math.round(height * dpr);
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
+  const ctx = canvas.getContext('2d')!;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); 
+  return ctx;
+}
+
+
+export function clearFull(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  ctx.clearRect(0, 0, w, h);
+}
